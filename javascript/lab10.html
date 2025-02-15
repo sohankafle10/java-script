@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Registration Form</h2>
+    <form onsubmit="return validateRegistrationForm()">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="phone" placeholder="Phone">
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="regUsername" placeholder="Username">
+        <input type="password" id="regPassword" placeholder="Password">
+        <label>
+            <input type="checkbox" id="terms"> I accept the terms and conditions
+        </label>
+        <button type="submit">Register</button>
+    </form>
+    <p id="registrationError"></p>
+
+    <script>
+        function validateRegistrationForm() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
+            const terms = document.getElementById('terms').checked;
+            const errorMsg = document.getElementById('registrationError');
+
+            if (!name || !phone || !email || !username || !password || !terms) {
+                errorMsg.innerText = "All fields are required, and terms must be accepted.";
+                return false;
+            }
+
+            if (name.length < 5) {
+                errorMsg.innerText = "Name must be at least 5 characters.";
+                return false;
+            }
+
+            if (!/^9[87]\d{8}$/.test(phone)) {
+                errorMsg.innerText = "Phone number must start with 98 or 97 and be 10 digits long.";
+                return false;
+            }
+
+            if (username === password) {
+                errorMsg.innerText = "Username and Password cannot be the same.";
+                return false;
+            }
+
+            if (password.length < 8) {
+                errorMsg.innerText = "Password must be at least 8 characters long.";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

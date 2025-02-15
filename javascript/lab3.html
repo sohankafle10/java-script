@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Show/Hide a Div</h2>
+    <button onclick="toggleDiv()">Show/Hide</button>
+    <div id="myDiv" style="display:none;">
+        This is a toggleable div.
+    </div>
+
+    <script>
+        function toggleDiv() {
+            const div = document.getElementById('myDiv');
+            div.style.display = div.style.display === "none" ? "block" : "none";
+        }
+    </script>
+</body>
+</html>

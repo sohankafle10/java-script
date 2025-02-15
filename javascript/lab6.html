@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Check if Input is a Number</h2>
+    <input type="text" id="inputValue" placeholder="Enter a value">
+    <button onclick="checkIfNumber()">Check</button>
+    <p id="numberCheckResult"></p>
+
+    <script>
+        function checkIfNumber() {
+            const value = document.getElementById('inputValue').value;
+            const isNumber = !isNaN(value);
+            document.getElementById('numberCheckResult').innerText = isNumber ? "It's a number" : "It's not a number";
+        }
+    </script>
+</body>
+</html>

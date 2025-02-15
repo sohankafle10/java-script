@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Login Form</h2>
+    <form onsubmit="return validateLoginForm()">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button type="submit">Login</button>
+    </form>
+    <p id="loginError"></p>
+
+    <script>
+        function validateLoginForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('loginError');
+
+            if (!username || !password) {
+                errorMsg.innerText = "Username and Password are required.";
+                return false;
+            }
+
+            if (username === password) {
+                errorMsg.innerText = "Username and Password cannot be the same.";
+                return false;
+            }
+
+            if (username.length < 5 || username.length > 15) {
+                errorMsg.innerText = "Username must be between 5 and 15 characters.";
+                return false;
+            }
+
+            if (password.length < 8) {
+                errorMsg.innerText = "Password must be at least 8 characters long.";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
